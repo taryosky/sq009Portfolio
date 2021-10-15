@@ -21,5 +21,6 @@ namespace SQ009Portfolio.Data
         public DbSet<Message> Messages { get; set; }
         public DbSet<ApiKey> APIKeys { get; set; }
         public DbSet<Skill> Skills { get; set; }
+        public DbSet<Project> Projects { get; set; }
     }
 }

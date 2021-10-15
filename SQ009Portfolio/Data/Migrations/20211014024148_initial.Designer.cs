@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SQ009Portfolio.Data;
 
 namespace SQ009Portfolio.Data.Migrations
 {
     [DbContext(typeof(PortfolioContext))]
-    partial class PortfolioContextModelSnapshot : ModelSnapshot
+    [Migration("20211014024148_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,7 +27,7 @@ namespace SQ009Portfolio.Data.Migrations
                     b.Property<int>("AppUserId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Key")
+                    b.Property<Guid>("Key")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -120,34 +122,6 @@ namespace SQ009Portfolio.Data.Migrations
                     b.ToTable("Messages");
                 });
 
-            modelBuilder.Entity("SQ009Portfolio.Data.Models.Project", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("AppUserId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ProjectUrl")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AppUserId");
-
-                    b.ToTable("Projects");
-                });
-
             modelBuilder.Entity("SQ009Portfolio.Data.Models.Skill", b =>
                 {
                     b.Property<int>("Id")
@@ -231,17 +205,6 @@ namespace SQ009Portfolio.Data.Migrations
                     b.Navigation("AppUser");
                 });
 
-            modelBuilder.Entity("SQ009Portfolio.Data.Models.Project", b =>
-                {
-                    b.HasOne("SQ009Portfolio.Data.Models.AppUser", "AppUser")
-                        .WithMany("Projects")
-                        .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AppUser");
-                });
-
             modelBuilder.Entity("SQ009Portfolio.Data.Models.Skill", b =>
                 {
                     b.HasOne("SQ009Portfolio.Data.Models.AppUser", "AppUser")
@@ -269,8 +232,6 @@ namespace SQ009Portfolio.Data.Migrations
                     b.Navigation("EducationHistory");
 
                     b.Navigation("Messages");
-
-                    b.Navigation("Projects");
 
                     b.Navigation("Skills");
 

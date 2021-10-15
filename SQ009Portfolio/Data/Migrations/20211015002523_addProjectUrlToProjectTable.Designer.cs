@@ -9,8 +9,8 @@ using SQ009Portfolio.Data;
 namespace SQ009Portfolio.Data.Migrations
 {
     [DbContext(typeof(PortfolioContext))]
-    [Migration("20211012025825_initial")]
-    partial class initial
+    [Migration("20211015002523_addProjectUrlToProjectTable")]
+    partial class addProjectUrlToProjectTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,8 +27,7 @@ namespace SQ009Portfolio.Data.Migrations
                     b.Property<int>("AppUserId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<Guid>("Key")
-                        .ValueGeneratedOnAdd()
+                    b.Property<string>("Key")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -123,6 +122,34 @@ namespace SQ009Portfolio.Data.Migrations
                     b.ToTable("Messages");
                 });
 
+            modelBuilder.Entity("SQ009Portfolio.Data.Models.Project", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("AppUserId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ProjectUrl")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.ToTable("Projects");
+                });
+
             modelBuilder.Entity("SQ009Portfolio.Data.Models.Skill", b =>
                 {
                     b.Property<int>("Id")
@@ -206,15 +233,26 @@ namespace SQ009Portfolio.Data.Migrations
                     b.Navigation("AppUser");
                 });
 
-            modelBuilder.Entity("SQ009Portfolio.Data.Models.Skill", b =>
+            modelBuilder.Entity("SQ009Portfolio.Data.Models.Project", b =>
                 {
-                    b.HasOne("SQ009Portfolio.Data.Models.AppUser", "MyProperty")
-                        .WithMany()
+                    b.HasOne("SQ009Portfolio.Data.Models.AppUser", "AppUser")
+                        .WithMany("Projects")
                         .HasForeignKey("AppUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("MyProperty");
+                    b.Navigation("AppUser");
+                });
+
+            modelBuilder.Entity("SQ009Portfolio.Data.Models.Skill", b =>
+                {
+                    b.HasOne("SQ009Portfolio.Data.Models.AppUser", "AppUser")
+                        .WithMany("Skills")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
                 });
 
             modelBuilder.Entity("SQ009Portfolio.Data.Models.WorkHistory", b =>
@@ -233,6 +271,10 @@ namespace SQ009Portfolio.Data.Migrations
                     b.Navigation("EducationHistory");
 
                     b.Navigation("Messages");
+
+                    b.Navigation("Projects");
+
+                    b.Navigation("Skills");
 
                     b.Navigation("WorkHistory");
                 });

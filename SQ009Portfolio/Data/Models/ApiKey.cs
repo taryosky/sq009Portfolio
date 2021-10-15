@@ -12,8 +12,7 @@ namespace SQ009Portfolio.Data.Models
         public int AppUserId { get; set; }
         public AppUser AppUser { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid Key { get; set; }
+        public string Key { get; set; } = Guid.NewGuid().ToString();
 
     }
 }

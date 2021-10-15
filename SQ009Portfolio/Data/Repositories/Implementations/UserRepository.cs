@@ -23,6 +23,8 @@ namespace SQ009Portfolio.Data.Repositories.Implementations
             _ctx.Users.Include(x => x.WorkHistory)
             .Include(x => x.EducationHistory)
             .Include(x => x.Messages)
+            .Include(x => x.Skills)
+            .Include(x => x.Projects)
             .FirstOrDefault(x => x.Id == userId);
     }
 }

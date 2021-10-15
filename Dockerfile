@@ -7,17 +7,17 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
 WORKDIR /src
-COPY ["Profile/Profile.csproj", "Profile/"]
-RUN dotnet restore "Profile/Profile.csproj"
+COPY ["SQ009Portfolio/SQ009Portfolio.csproj", "SQ009Portfolio/"]
+RUN dotnet restore "SQ009Portfolio/SQ009Portfolio.csproj"
 COPY . .
-WORKDIR "/src/Profile"
-RUN dotnet build "Profile.csproj" -c Release -o /app/build
+WORKDIR "/src/SQ009Portfolio"
+RUN dotnet build "SQ009Portfolio.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Profile.csproj" -c Release -o /app/publish
+RUN dotnet publish "SQ009Portfolio.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-#ENTRYPOINT ["dotnet", "Profile.dll"]
-CMD ASPNETCORE_URLS=http://*:$PORT dotnet Profile.dll
+#ENTRYPOINT ["dotnet", "SQ009Portfolio.dll"]
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet SQ009Portfolio.dll

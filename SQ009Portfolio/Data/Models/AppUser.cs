@@ -16,6 +16,8 @@ namespace SQ009Portfolio.Data.Models
         public string Address { get; set; }
         public ICollection<EducationHistory> EducationHistory { get; set; }
         public ICollection<WorkHistory> WorkHistory { get; set; }
+        public ICollection<Skill> Skills { get; set; }
         public ICollection<Message> Messages { get; set; }
+        public ICollection<Project> Projects { get; set; }
     }
 }

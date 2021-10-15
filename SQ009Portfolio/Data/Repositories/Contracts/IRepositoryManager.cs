@@ -3,5 +3,6 @@
     public interface IRepositoryManager
     {
         public IUserRepository UserRepo { get; }
+        public IApiKeyRepository ApiKeyRepo { get; }
     }
 }
