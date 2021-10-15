@@ -27,7 +27,7 @@ namespace SQ009Portfolio.Controllers
         [ProducesResponseType(typeof(IEnumerable<ResponseModel<ApiKeyToReturnDto>>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetApiKeys([FromHeader]string token)
         {
-            if(token != "RansoEneni")
+            if(token?.ToLower() != "azibagiri@1234")
             {
                 var error = new Dictionary<string, string>
                 {
