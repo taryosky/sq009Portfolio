@@ -109,7 +109,7 @@
         "degreeoptained": "Bachelor of Science, Economics.",
         "startdate": "2005-01-06",
         "enddate": "2009-07-23"
-      }
+      } 
     ],
     "workhistory": [
       {
@@ -327,6 +327,60 @@
         "projecturl": "https://github.com/adayesi/portfolio"
       }
     ]
+  },
+  {
+    "firstname": "Taofeek",
+    "lastname": "Jimoh",
+    "email": "taofeek.jimoh@decagon.dev",
+    "phonenumber": "+234 8161776046",
+    "address": "3, Mola Audu Street, Owode-yewa, Ogun State",
+    "educationhistory": [
+      {
+        "InstitutionName": "Obafemi Awolowo University, Osun State",
+        "degreeoptained": "BAgric",
+        "startdate": "2008-02-16",
+        "enddate": "2013-03-05"
+      },
+      {
+        "InstitutionName": "Kwame Nkrumah University of Science and Technology, Ghana",
+        "degreeoptained": "MPhil",
+        "startdate": "2016-09-25",
+        "enddate": "2019-01-22"
+      }
+    ],
+    "workhistory": [
+      {
+        "organization": "Institute of Continuing education, Delta State",
+        "position": "Agricultural Science Teacher",
+        "startdate": "2014-04-05",
+        "enddate": "2015-03-06"
+      },
+      {
+        "organization": "Al-Minhaaj Model College, Ogun State",
+        "position": "Biology Teacher",
+        "startdate": "2015-04-08",
+        "enddate": "2016-09-16"
+      },
+      {
+        "organization": "Crop Research Institute",
+        "position": "Research Intern",
+        "startdate": "2017-06-17",
+        "enddate": "2018-12-18"
+      }
+    ],
+    "skills": [
+      {
+        "name": "C#",
+        "level": 30
+      }
+    ],
+    "projects": [
+      {
+        "name": "Portfolio website",
+        "description": "This is website that describes and summarises my past projects.",
+        "imageUrl": "http://github.com/Netjonin",
+        "projecturl": "http://github.com/Netjonin"
+      }
+    ]
   }
-  
 ]
